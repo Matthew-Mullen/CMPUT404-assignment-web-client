@@ -169,6 +169,7 @@ class TestHTTPClient(unittest.TestCase):
         http = httpclass.HTTPClient()
         req = http.POST("http://%s:%d/49872398432" % (BASEHOST,BASEPORT) )
         self.assertTrue(req != None, "None Returned!")
+        print(req.code)
         self.assertTrue(req.code == 404)
 
     def testGET(self):
@@ -180,6 +181,9 @@ class TestHTTPClient(unittest.TestCase):
         req = http.GET( url )
         self.assertTrue(req != None, "None Returned!")
         self.assertTrue(req.code == 200)
+        #print("REQ BODY AS REQUESTED")
+        #print(req.body)
+        #print(req.body.find(path))
         self.assertTrue(req.body.find(path)>=0, "Data: [%s] " % req.body)
 
     def testGETHeaders(self):
@@ -207,6 +211,7 @@ class TestHTTPClient(unittest.TestCase):
         
         
     # consider disabling this test until everything else works
+    """
     def testInternetGets(self):
         '''Test HTTP Get in the wild, these webservers are far less
            forgiving'''
@@ -233,6 +238,7 @@ class TestHTTPClient(unittest.TestCase):
                 self.assertTrue(req.body.find("DOCTYPE")>=0 or 
                                 req.body.find("<body")>=0 , 
                                 "%s Data: [%s] " % (url,req.body))
+        """
     
     def testPOST(self):
         '''Test HTTP POST with an echo server'''
