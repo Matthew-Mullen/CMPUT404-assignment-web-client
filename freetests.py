@@ -211,7 +211,7 @@ class TestHTTPClient(unittest.TestCase):
         
         
     # consider disabling this test until everything else works
-    """
+
     def testInternetGets(self):
         '''Test HTTP Get in the wild, these webservers are far less
            forgiving'''
@@ -238,7 +238,7 @@ class TestHTTPClient(unittest.TestCase):
                 self.assertTrue(req.body.find("DOCTYPE")>=0 or 
                                 req.body.find("<body")>=0 , 
                                 "%s Data: [%s] " % (url,req.body))
-        """
+        
     
     def testPOST(self):
         '''Test HTTP POST with an echo server'''
